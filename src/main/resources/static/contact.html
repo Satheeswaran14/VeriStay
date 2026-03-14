@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | VeriStay</title>
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="global.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen relative overflow-x-hidden selection:bg-teal-200 selection:text-teal-900">
+
+    <div class="fixed top-[-10%] right-[-10%] w-[500px] h-[500px] bg-teal-400/20 rounded-full mix-blend-multiply filter blur-[100px] z-0 pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-400/20 rounded-full mix-blend-multiply filter blur-[100px] z-0 pointer-events-none"></div>
+
+    <header class="glass-nav sticky top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center relative z-20">
+            <a href="/" class="flex items-center gap-3 group">
+                <div class="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-500 shadow-lg shadow-teal-500/30 group-hover:-translate-y-1 transition-all duration-300">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-sm">
+                        <div class="bg-cyan-500 rounded-full w-3.5 h-3.5 flex items-center justify-center">
+                            <svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <span class="text-2xl font-extrabold text-slate-800 tracking-tight group-hover:text-teal-700 transition-colors">VeriStay</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 font-medium text-slate-600">
+                <a href="/about.html" class="hover:text-teal-600 transition-colors">About</a>
+                <a href="/contact.html" class="text-teal-600 font-bold transition-colors">Contact</a>
+                <div id="nav-auth-container" class="flex items-center gap-4"></div>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 hover:text-teal-600 focus:outline-none transition-colors">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full glass-panel border-t border-white/50 shadow-xl z-10 origin-top animate-fade-in-down">
+            <div class="px-4 pt-4 pb-6 space-y-4 flex flex-col">
+                <a href="/about.html" class="block px-4 py-3 rounded-xl hover:bg-teal-50 text-slate-700 font-medium transition-colors">About</a>
+                <a href="/contact.html" class="block px-4 py-3 rounded-xl bg-teal-50 text-teal-700 font-bold transition-colors">Contact</a>
+                <div id="mobile-auth-container" class="border-t border-slate-200/50 pt-4 flex flex-col gap-3 px-4"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-16 max-w-6xl flex-grow relative z-10">
+        <div class="text-center mb-16" data-aos="fade-down">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight">Get in Touch</h1>
+            <p class="text-slate-500 mt-6 text-xl max-w-2xl mx-auto font-light">Have a question about a property or need help with your account? Our team is standing by.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            
+            <div class="space-y-6" data-aos="fade-right">
+                <div class="glass-panel p-8 rounded-[2rem] hover-lift">
+                    <div class="w-14 h-14 bg-teal-100 text-teal-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">📍</div>
+                    <h3 class="text-2xl font-extrabold text-slate-900 tracking-tight">Head Office</h3>
+                    <p class="text-slate-500 mt-2 font-light">123 VeriStay Tower, Tech Park<br>Mumbai, Maharashtra 400001</p>
+                </div>
+                
+                <div class="glass-panel p-8 rounded-[2rem] hover-lift">
+                    <div class="w-14 h-14 bg-cyan-100 text-cyan-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">✉️</div>
+                    <h3 class="text-2xl font-extrabold text-slate-900 tracking-tight">Email Support</h3>
+                    <p class="text-slate-500 mt-2 font-light">support@veristay.com<br>admin@veristay.com</p>
+                </div>
+            </div>
+
+            <div class="glass-panel p-8 sm:p-10 rounded-[2.5rem]" data-aos="fade-left">
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="space-y-1">
+                            <label class="block text-sm font-bold text-slate-700 ml-1">Your Name</label>
+                            <input type="text" id="contactName" required class="w-full px-5 py-4 bg-white/50 border border-slate-200 rounded-2xl shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all duration-300">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="block text-sm font-bold text-slate-700 ml-1">Email Address</label>
+                            <input type="email" id="contactEmail" required class="w-full px-5 py-4 bg-white/50 border border-slate-200 rounded-2xl shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all duration-300">
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block text-sm font-bold text-slate-700 ml-1">Subject</label>
+                        <input type="text" id="contactSubject" required class="w-full px-5 py-4 bg-white/50 border border-slate-200 rounded-2xl shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all duration-300">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block text-sm font-bold text-slate-700 ml-1">Message</label>
+                        <textarea id="contactMessage" rows="5" required class="w-full px-5 py-4 bg-white/50 border border-slate-200 rounded-2xl shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all duration-300 resize-none"></textarea>
+                    </div>
+                    <button type="submit" id="contactBtn" class="w-full bg-slate-900 hover:bg-teal-600 text-white font-bold py-4 rounded-2xl transition-all duration-300 shadow-lg hover-lift">
+                        Send Message
+                    </button>
+                    <div id="contactStatus" class="mt-4 text-center hidden p-3 rounded-xl font-bold text-sm"></div>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <footer></footer>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="auth.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>

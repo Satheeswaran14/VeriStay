@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeriStay | The Future of Real Estate</title>
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="global.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="antialiased flex flex-col min-h-screen bg-slate-50 relative selection:bg-teal-200 selection:text-teal-900">
+
+    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-teal-400/20 rounded-full mix-blend-multiply filter blur-[100px] z-0 pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-cyan-400/20 rounded-full mix-blend-multiply filter blur-[100px] z-0 pointer-events-none"></div>
+
+    <header class="glass-nav sticky top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center relative z-20">
+            
+            <a href="/" class="flex items-center gap-3 group">
+                <div class="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-500 shadow-lg shadow-teal-500/30 group-hover:-translate-y-1 transition-all duration-300">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-sm">
+                        <div class="bg-cyan-500 rounded-full w-3.5 h-3.5 flex items-center justify-center">
+                            <svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <span class="text-2xl font-extrabold text-slate-800 tracking-tight group-hover:text-teal-700 transition-colors">VeriStay</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 font-medium text-slate-600">
+                <a href="/about.html" class="hover:text-teal-600 transition-colors">About</a>
+                <a href="/contact.html" class="hover:text-teal-600 transition-colors">Contact</a>
+                <div id="nav-auth-container" class="flex items-center gap-4"></div>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 hover:text-teal-600 focus:outline-none transition-colors">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full glass-panel border-t border-white/50 shadow-xl z-10 origin-top animate-fade-in-down">
+            <div class="px-4 pt-4 pb-6 space-y-4 flex flex-col">
+                <a href="/about.html" class="block px-4 py-3 rounded-xl hover:bg-teal-50 text-slate-700 font-medium transition-colors">About</a>
+                <a href="/contact.html" class="block px-4 py-3 rounded-xl hover:bg-teal-50 text-slate-700 font-medium transition-colors">Contact</a>
+                <div id="mobile-auth-container" class="border-t border-slate-200/50 pt-4 flex flex-col gap-3 px-4"></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative h-[75vh] min-h-[600px] flex items-center justify-center overflow-hidden rounded-b-[3rem] shadow-sm mx-2 sm:mx-4 mt-2 border border-white/60 glass-panel">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Luxury Home" class="w-full h-full object-cover object-center opacity-90" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent backdrop-blur-[1px]"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 text-center" data-aos="zoom-out" data-aos-duration="1200">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6 drop-shadow-lg leading-tight">
+                Your Next Chapter <br><span class="text-gradient drop-shadow-sm">Starts Here.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto drop-shadow-md font-light">
+                Direct connections. Zero middle-men. Verified properties.
+            </p>
+
+            <div class="glass-panel p-2 rounded-2xl md:rounded-full flex flex-col md:flex-row items-center max-w-3xl mx-auto shadow-2xl gap-2 transition-all duration-300 focus-within:bg-white/90">
+                <div class="w-full md:flex-grow px-4 py-2">
+                    <input type="text" id="searchInput" placeholder="Search cities, neighborhoods..." class="w-full bg-transparent text-slate-800 placeholder-slate-500 outline-none text-lg font-medium">
+                </div>
+                <button onclick="searchProperties()" class="w-full md:w-auto bg-slate-900 hover:bg-teal-600 text-white rounded-xl md:rounded-full px-8 py-4 font-bold transition-colors shadow-lg flex items-center justify-center gap-2">
+                    Explore
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <main class="flex-grow pt-24 pb-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-up">
+                <div>
+                    <h2 class="text-sm font-bold text-teal-600 tracking-widest uppercase mb-2">Curated Collection</h2>
+                    <h3 class="text-4xl font-extrabold text-slate-900 tracking-tight">Verified Listings</h3>
+                </div>
+                
+                <div class="flex gap-3 mt-6 md:mt-0 overflow-x-auto pb-4 scrollbar-hide w-full md:w-auto snap-x">
+                    <button onclick="filterProperties('')" class="snap-start shrink-0 filter-btn active px-6 py-3 rounded-2xl font-bold text-sm transition-all bg-slate-900 text-white shadow-md">All Properties</button>
+                    <button onclick="filterProperties('BUY_HOUSE')" class="snap-start shrink-0 filter-btn px-6 py-3 rounded-2xl font-bold text-sm transition-all glass-panel text-slate-700 hover:bg-white">Houses</button>
+                    <button onclick="filterProperties('BUY_LAND')" class="snap-start shrink-0 filter-btn px-6 py-3 rounded-2xl font-bold text-sm transition-all glass-panel text-slate-700 hover:bg-white">Lands</button>
+                    <button onclick="filterProperties('PG_HOSTEL')" class="snap-start shrink-0 filter-btn px-6 py-3 rounded-2xl font-bold text-sm transition-all glass-panel text-slate-700 hover:bg-white">PG & Hostels</button>
+                </div>
+            </div>
+
+            <div id="properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="col-span-full flex justify-center py-20">
+                    <div class="loader-circle w-14 h-14 border-4 border-slate-200 rounded-full"></div>
+                </div>
+            </div>
+
+            <div id="no-results" class="hidden text-center py-24 glass-panel rounded-3xl mt-8" data-aos="fade-in">
+                <div class="text-6xl mb-4 opacity-50">✨</div>
+                <h3 class="text-2xl font-bold text-slate-800 mb-2">Awaiting Discoveries</h3>
+                <p class="text-slate-500">We couldn't find properties matching those exact filters.</p>
+                <button onclick="filterProperties('')" class="mt-6 text-teal-600 font-bold hover:text-teal-700 transition-colors">Reset Filters</button>
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

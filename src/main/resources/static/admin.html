@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdminOS | VeriStay</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="global.css">
+</head>
+<body class="bg-slate-50 flex h-screen overflow-hidden selection:bg-teal-200 selection:text-teal-900 relative">
+
+    <div class="fixed top-[20%] left-[20%] w-[600px] h-[600px] bg-indigo-400/10 rounded-full mix-blend-multiply filter blur-[120px] z-0 pointer-events-none"></div>
+    <div class="fixed bottom-[10%] right-[10%] w-[500px] h-[500px] bg-teal-400/10 rounded-full mix-blend-multiply filter blur-[100px] z-0 pointer-events-none"></div>
+
+    <div id="admin-overlay" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 hidden transition-opacity opacity-0 lg:hidden"></div>
+
+    <aside id="admin-sidebar" class="w-72 bg-slate-900 text-white flex flex-col shadow-2xl z-50 fixed inset-y-0 left-0 transform -translate-x-full transition-transform duration-300 lg:translate-x-0 lg:static lg:flex rounded-r-[2.5rem] my-4 ml-4 border border-slate-800">
+        <div class="p-8 border-b border-slate-800/50 flex justify-between items-center">
+            <a href="/" class="flex items-center gap-3 group">
+                <div class="relative flex items-center justify-center w-10 h-10 rounded-xl bg-slate-800 group-hover:bg-teal-600 transition-colors duration-300">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold text-white tracking-tight leading-none">Admin<span class="text-teal-400">OS</span></span>
+                </div>
+            </a>
+            <button id="close-sidebar-btn" class="lg:hidden text-slate-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        
+        <nav class="flex-1 px-4 py-8 space-y-3 overflow-y-auto custom-scrollbar" id="admin-nav">
+            <button onclick="switchView('overview')" class="nav-btn w-full flex items-center gap-4 px-5 py-4 bg-teal-500/10 text-teal-400 rounded-2xl font-bold transition-all border border-teal-500/20 active-nav"><span class="text-xl">📊</span> Overview</button>
+            <button onclick="switchView('properties')" class="nav-btn w-full flex items-center gap-4 px-5 py-4 text-slate-400 hover:bg-slate-800/50 hover:text-white rounded-2xl font-medium transition-all"><span class="text-xl">🏢</span> Properties</button>
+            <button onclick="switchView('users')" class="nav-btn w-full flex items-center gap-4 px-5 py-4 text-slate-400 hover:bg-slate-800/50 hover:text-white rounded-2xl font-medium transition-all"><span class="text-xl">👥</span> Users</button>
+            <button onclick="switchView('admins')" class="nav-btn w-full flex items-center gap-4 px-5 py-4 text-slate-400 hover:bg-slate-800/50 hover:text-white rounded-2xl font-medium transition-all"><span class="text-xl">🛡️</span> Admins</button>
+            <button onclick="switchView('inbox')" class="nav-btn w-full flex items-center gap-4 px-5 py-4 text-slate-400 hover:bg-slate-800/50 hover:text-white rounded-2xl font-medium transition-all"><span class="text-xl">✉️</span> Inbox</button>
+            <a href="/" class="flex items-center gap-4 px-5 py-4 text-slate-400 hover:bg-slate-800/50 hover:text-white rounded-2xl font-medium transition-all mt-8 border-t border-slate-800 pt-6"><span class="text-xl">🌍</span> Public Site</a>
+        </nav>
+        
+        <div class="p-6 border-t border-slate-800/50">
+            <button onclick="logout()" class="w-full text-left px-5 py-4 text-rose-400 font-bold hover:bg-slate-800/80 rounded-2xl transition-all flex items-center gap-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg> Sign Out
+            </button>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto scroll-smooth relative z-10 custom-scrollbar">
+        <header class="glass-nav px-8 py-5 flex justify-between items-center sticky top-0 z-50">
+            <div class="flex items-center gap-4">
+                <button id="mobile-menu-btn" class="lg:hidden text-slate-600 hover:text-teal-600 transition-colors p-2">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+                <h1 class="text-2xl font-extrabold text-slate-800 tracking-tight" id="header-title">Overview</h1>
+            </div>
+            <div class="flex items-center gap-3 bg-white/50 px-2 py-1.5 rounded-full border border-slate-200/60 shadow-sm backdrop-blur-md">
+                <span class="text-slate-700 font-bold text-sm px-3" id="header-admin-name">Admin</span>
+                <div class="w-8 h-8 bg-gradient-to-br from-slate-800 to-slate-900 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-inner">A</div>
+            </div>
+        </header>
+
+        <div class="p-4 sm:p-8 max-w-7xl mx-auto w-full pb-24">
+            
+            <div id="overview" class="view-section grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
+                <div class="glass-panel p-6 rounded-[2rem] flex items-center justify-between hover-lift border-t border-white shadow-xl shadow-slate-200/20">
+                    <div><p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-1">Total Users</p><h3 id="stat-users" class="text-4xl font-black text-indigo-600">0</h3></div>
+                    <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl shadow-inner">👥</div>
+                </div>
+                <div class="glass-panel p-6 rounded-[2rem] flex items-center justify-between hover-lift border-t border-white shadow-xl shadow-slate-200/20">
+                    <div><p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-1">Total Owners</p><h3 id="stat-owners" class="text-4xl font-black text-teal-600">0</h3></div>
+                    <div class="w-14 h-14 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center text-2xl shadow-inner">🔑</div>
+                </div>
+                <div class="glass-panel p-6 rounded-[2rem] flex items-center justify-between hover-lift border-t border-white shadow-xl shadow-slate-200/20">
+                    <div><p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-1">Total Listings</p><h3 id="stat-total" class="text-4xl font-black text-blue-600">0</h3></div>
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl shadow-inner">🏢</div>
+                </div>
+                <div class="glass-panel p-6 rounded-[2rem] flex items-center justify-between hover-lift border-t border-white shadow-xl shadow-slate-200/20">
+                    <div><p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-1">Pending Approvals</p><h3 id="stat-pending" class="text-4xl font-black text-amber-500">0</h3></div>
+                    <div class="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-2xl shadow-inner">⚠️</div>
+                </div>
+            </div>
+
+            <div id="properties" class="view-section hidden glass-panel rounded-[2.5rem] overflow-hidden shadow-xl shadow-slate-200/30 border-t border-white mt-4">
+                <div class="px-8 py-6 border-b border-slate-200/60 bg-teal-50/50 backdrop-blur-md">
+                    <h3 class="text-xl font-extrabold text-slate-800 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-sm">🏢</span> Property Verifications
+                    </h3>
+                </div>
+                <div class="overflow-x-auto max-h-[600px] overflow-y-auto custom-scrollbar bg-white/40">
+                    <table class="w-full text-left border-collapse min-w-[600px]">
+                        <thead class="sticky top-0 bg-white/90 backdrop-blur-md z-10 shadow-sm">
+                            <tr class="text-slate-500 text-xs font-bold uppercase tracking-widest border-b border-slate-200/60">
+                                <th class="px-8 py-5">Details</th><th class="px-8 py-5">Owner</th><th class="px-8 py-5">Status</th><th class="px-8 py-5 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-property-table" class="text-sm divide-y divide-slate-100 font-medium"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="users" class="view-section hidden glass-panel rounded-[2.5rem] overflow-hidden shadow-xl shadow-slate-200/30 border-t border-white mt-4">
+                <div class="px-8 py-6 border-b border-slate-200/60 bg-indigo-50/50 backdrop-blur-md">
+                    <h3 class="text-xl font-extrabold text-slate-800 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm">👥</span> Client Directory
+                    </h3>
+                </div>
+                <div class="overflow-x-auto max-h-[600px] overflow-y-auto custom-scrollbar bg-white/40">
+                    <table class="w-full text-left border-collapse min-w-[600px]">
+                        <thead class="sticky top-0 bg-white/90 backdrop-blur-md z-10 shadow-sm">
+                            <tr class="text-slate-500 text-xs font-bold uppercase tracking-widest border-b border-slate-200/60">
+                                <th class="px-8 py-5">User</th><th class="px-8 py-5">Contact</th><th class="px-8 py-5">Role</th><th class="px-8 py-5 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-users-table" class="text-sm divide-y divide-slate-100 font-medium"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="admins" class="view-section hidden mt-4">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="glass-panel p-8 rounded-[2.5rem] shadow-xl border-t border-white h-fit">
+                        <h3 class="text-xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-sm">🛡️</span> Spawn Admin
+                        </h3>
+                        <form id="create-admin-form" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 ml-1 mb-1">Full Name</label>
+                                <input type="text" id="admin-name" required class="w-full px-5 py-3 bg-white/50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-slate-900 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 ml-1 mb-1">Email</label>
+                                <input type="email" id="admin-email" required class="w-full px-5 py-3 bg-white/50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-slate-900 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 ml-1 mb-1">Password</label>
+                                <input type="password" id="admin-pass" required class="w-full px-5 py-3 bg-white/50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-slate-900 outline-none">
+                            </div>
+                            <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 rounded-2xl shadow-md transition mt-4">Create Admin Account</button>
+                        </form>
+                    </div>
+
+                    <div class="lg:col-span-2 glass-panel rounded-[2.5rem] overflow-hidden shadow-xl border-t border-white">
+                        <div class="px-8 py-6 border-b border-slate-200/60 bg-slate-100/50 backdrop-blur-md">
+                            <h3 class="text-xl font-extrabold text-slate-800">Admin Personnel</h3>
+                        </div>
+                        <div class="overflow-x-auto max-h-[500px] overflow-y-auto custom-scrollbar bg-white/40">
+                            <table class="w-full text-left border-collapse min-w-[400px]">
+                                <thead class="sticky top-0 bg-white/90 backdrop-blur-md z-10 shadow-sm">
+                                    <tr class="text-slate-500 text-xs font-bold uppercase tracking-widest border-b border-slate-200/60">
+                                        <th class="px-8 py-5">Personnel</th><th class="px-8 py-5 text-right">Clearance</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-list-table" class="text-sm divide-y divide-slate-100 font-medium"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="inbox" class="view-section hidden glass-panel rounded-[2.5rem] overflow-hidden shadow-xl shadow-slate-200/30 border-t border-white mt-4">
+                <div class="px-8 py-6 border-b border-slate-200/60 bg-slate-100/50 backdrop-blur-md flex justify-between items-center">
+                    <h3 class="text-xl font-extrabold text-slate-800 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center text-sm">✉️</span> Support Inbox
+                    </h3>
+                    <span id="msg-count-badge" class="bg-slate-900 text-white px-4 py-1 rounded-full text-xs font-bold shadow-sm">0 New</span>
+                </div>
+                <div class="p-8 bg-white/30">
+                    <div id="admin-messages-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="auth.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

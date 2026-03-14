@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard | VeriStay</title>
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="global.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col relative overflow-x-hidden selection:bg-teal-200 selection:text-teal-900">
+
+    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-teal-400/10 rounded-full mix-blend-multiply filter blur-[100px] z-0 pointer-events-none"></div>
+
+    <header class="glass-nav sticky top-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center relative z-20">
+            <a href="/" class="flex items-center gap-3 group">
+                <div class="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-500 shadow-lg shadow-teal-500/30 group-hover:-translate-y-1 transition-all duration-300">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-sm"><div class="bg-cyan-500 rounded-full w-3.5 h-3.5 flex items-center justify-center"><svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div></div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold text-slate-800 tracking-tight leading-none group-hover:text-teal-700 transition-colors">VeriStay</span>
+                    <span class="text-[10px] font-bold text-teal-600 tracking-widest uppercase mt-0.5">Owner Portal</span>
+                </div>
+            </a>
+
+            <div id="nav-auth-container" class="hidden md:flex items-center gap-4"></div>
+
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 hover:text-teal-600 focus:outline-none transition-colors">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full glass-panel border-t border-white/50 shadow-xl z-10 origin-top animate-fade-in-down">
+            <div class="px-4 pt-4 pb-6 space-y-4 flex flex-col">
+                <div id="mobile-auth-container" class="flex flex-col gap-3 px-4"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-7xl flex-grow relative z-10">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10" data-aos="fade-down">
+            <div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">My Portfolio</h1>
+                <p class="text-slate-500 mt-2 font-light text-lg">Manage your active listings and track verifications.</p>
+            </div>
+            <a href="/post-property.html" class="mt-6 md:mt-0 bg-slate-900 hover:bg-teal-600 text-white px-8 py-4 rounded-2xl font-bold shadow-lg transition-all duration-300 hover-lift flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                List New Property
+            </a>
+        </div>
+
+        <div class="glass-panel rounded-[2.5rem] p-6 sm:p-10 min-h-[500px]">
+            <div id="owner-property-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="col-span-full flex justify-center py-32">
+                    <div class="w-14 h-14 border-4 border-slate-200 rounded-full loader-circle"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 rounded-t-[3rem] mx-2 sm:mx-4 mb-2 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm">© 2026 VeriStay. Empowering Owners.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="auth.js"></script>
+    <script src="owner-dashboard.js"></script>
+</body>
+</html>

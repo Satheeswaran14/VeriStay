@@ -1,0 +1,63 @@
+/* --- ENTERPRISE BASE & RESET --- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Outfit', sans-serif; /* Switched to Outfit for a more futuristic, geometric look */
+}
+
+body {
+    background-color: #f8fafc;
+    color: #0f172a;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- FUTURISTIC SCROLLBAR --- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { 
+    background: #cbd5e1; 
+    border-radius: 10px; 
+}
+::-webkit-scrollbar-thumb:hover { background: #0d9488; }
+
+/* --- ADVANCED GLASSMORPHISM --- */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+
+.glass-nav {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* --- SMOOTH ANIMATIONS --- */
+.hover-lift {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -5px rgba(13, 148, 136, 0.15), 0 10px 20px -5px rgba(13, 148, 136, 0.1);
+}
+
+/* Gradient Text Effect */
+.text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(135deg, #0d9488 0%, #0ea5e9 100%);
+}
+
+/* Loader Spinner */
+.loader-circle {
+    border-top-color: #0d9488;
+    animation: spin 1s cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }

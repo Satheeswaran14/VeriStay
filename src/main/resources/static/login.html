@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | VeriStay</title>
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="global.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 min-h-screen flex items-center justify-center p-4 relative overflow-hidden selection:bg-teal-200 selection:text-teal-900">
+
+    <div class="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-teal-400/20 rounded-full mix-blend-multiply filter blur-[100px] z-0 pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-cyan-400/20 rounded-full mix-blend-multiply filter blur-[100px] z-0 pointer-events-none"></div>
+
+    <div class="relative z-10 w-full max-w-md" data-aos="zoom-in" data-aos-duration="800">
+        
+        <div class="text-center mb-8">
+            <a href="/" class="inline-flex items-center justify-center gap-3 group hover-lift">
+                <div class="relative flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-500 shadow-lg shadow-teal-500/30 group-hover:-translate-y-1 transition-all duration-300">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-sm">
+                        <div class="bg-cyan-500 rounded-full w-4 h-4 flex items-center justify-center">
+                            <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <span class="text-3xl font-extrabold text-slate-800 tracking-tight">VeriStay</span>
+            </a>
+            <h2 class="mt-8 text-3xl font-extrabold text-slate-900 tracking-tight">Welcome Back</h2>
+            <p class="mt-2 text-slate-500 font-medium">Access your personalized dashboard.</p>
+        </div>
+
+        <div class="glass-panel py-10 px-6 sm:px-10 shadow-2xl rounded-[2rem] border border-white/60">
+            <form id="loginForm" class="space-y-6">
+                
+                <div class="space-y-1">
+                    <label for="email" class="block text-sm font-bold text-slate-700 ml-1">Email Address</label>
+                    <input id="email" type="email" required placeholder="name@example.com" class="w-full px-5 py-4 bg-white/50 border border-slate-200 rounded-2xl shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all duration-300">
+                </div>
+
+                <div class="space-y-1">
+                    <div class="flex justify-between items-center ml-1">
+                        <label for="password" class="block text-sm font-bold text-slate-700">Password</label>
+                        <a href="#" class="text-xs font-bold text-teal-600 hover:text-teal-700 transition-colors">Forgot?</a>
+                    </div>
+                    <input id="password" type="password" required placeholder="••••••••" class="w-full px-5 py-4 bg-white/50 border border-slate-200 rounded-2xl shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all duration-300">
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" id="loginBtn" class="w-full flex justify-center py-4 px-4 border border-transparent rounded-2xl shadow-lg text-base font-bold text-white bg-slate-900 hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all duration-300 hover-lift">
+                        Authenticate
+                    </button>
+                    <div id="loginError" class="mt-4 text-sm text-red-500 bg-red-50 p-3 rounded-xl border border-red-100 font-bold text-center hidden"></div>
+                </div>
+            </form>
+
+            <div class="mt-8 text-center text-sm">
+                <span class="text-slate-500 font-medium">Don't have an account yet?</span>
+                <a href="/register.html" class="font-bold text-teal-600 hover:text-teal-700 ml-1 transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-teal-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">Create one now</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>
